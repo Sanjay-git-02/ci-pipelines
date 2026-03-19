@@ -8,17 +8,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v5
+   name: CI Pipeline
 
-    - name: Set up Node js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 13
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 13
       
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Run Tests
-      run: npm test
+      - name: Run Tests
+        run: npm test
